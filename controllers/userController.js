@@ -60,10 +60,10 @@ const increaseProductQuantity = async function (req, res) {
             req.flash("error", "Product not found in cart");
         }
 
-        res.redirect('/cart');
+        res.redirect('/');
     } catch (error) {
         req.flash("error", "An error occurred while updating the cart");
-        res.redirect("/cart");
+        res.redirect("/");
     }
 }
 
@@ -88,10 +88,10 @@ const decreaseProductQuantity = async function (req, res) {
             req.flash("error", "Cannot decrease quantity below 1");
         }
 
-        res.redirect('/cart');
+        res.redirect('/');
     } catch (error) {
         req.flash("error", "An error occurred while updating the cart");
-        res.redirect("/cart");
+        res.redirect("/");
     }
 }
 
@@ -102,10 +102,10 @@ const removeFromCart = async function (req, res) {
 
         await user.save();
         req.flash("success", "Removed from cart")
-        res.redirect('/cart');
+        res.redirect('/');
     } catch (error) {
         req.flash("error", "An error occurred while updating the cart");
-        res.redirect("/cart");
+        res.redirect("/");
     }
 }
 

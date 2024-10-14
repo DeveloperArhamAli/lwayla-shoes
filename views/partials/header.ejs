@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LWAYLA SHOES <%= title %></title>
+    <title>LWAYLA SHOES - <%= title %></title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="icon" type="image/svg+xml" href="/images/logo.jpg">
     <link rel="stylesheet" href="/styles/output.css">
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="select-none">
 
-    <header class="w-full h-20 md:h-[150px] py-2 border-b border-orange-500 flex flex-col justify-center">
+    <!-- <header class="w-full h-20 md:h-[150px] py-2 border-b border-red-950 flex flex-col justify-center">
 
         <div class="w-full">
 
-            <div class="flex items-center justify-between px-10">
+            <div class="flex items-center justify-evenly px-10">
 
                 <div class="lg:hidden w-full flex items-center">
-                    <button><i class="ri-menu-line text-2xl text-black" id="slider"></i></button>
+                    <button>
+                        <i class="ri-menu-line text-2xl text-black" id="slider"></i>
+                    </button>
                 </div>
 
                 <a href="/">
@@ -38,8 +45,13 @@
 
                 <div class="flex items-center justify-end gap-2 w-full">
                     
-                    <a href="/login"><i class="ri-user-line text-2xl"></i></a>
-                    <a href="/cart"><i class="ri-shopping-cart-line text-2xl text-black cursor-pointer"></i></a>
+                    <a href="/login">
+                        <i class="ri-user-line text-2xl"></i>
+                    </a>
+
+                    <a href="/cart">
+                        <i class="ri-shopping-cart-line text-2xl text-black cursor-pointer"></i>
+                    </a>
 
                 </div>
 
@@ -49,7 +61,7 @@
 
     </header>
 
-    <div class="w-full h-10  lg:flex lg:items-center lg:justify-between bg-orange-500 text-white font-semibold hidden relative">
+    <div class="w-full h-10  lg:flex lg:items-center lg:justify-between bg-red-950 text-white font-semibold hidden relative">
 
         <div class="flex items-center w-full">
 
@@ -93,7 +105,7 @@
                 <% categories.forEach(function(category) { %>
 
                     <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-orange-50 hover:text-orange-600 rounded" href="/category/<%= category._id %>"><%= category.name %></a>
+                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-600 rounded" href="/category/<%= category._id %>"><%= category.name %></a>
                     </li>
         
                 <% }) %>
@@ -109,7 +121,50 @@
 
         </div>
 
-    </nav>
+    </nav> -->
+
+    <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
+
+        <header>
+            <div class="container mx-auto px-6 py-3">
+                <div class="flex items-center justify-between">
+                    <div class="hidden w-full text-gray-600 md:flex md:items-center">
+                        <span class="mx-1 text-sm">NY</span>
+                    </div>
+                    <div class="w-full text-gray-700 md:text-center text-3xl font-semibold">
+                        <a href="/" style="font-family: 'Bebas Neue';">LWAYLA SHOES</a>
+                    </div>
+                    <div class="flex items-center justify-end w-full">
+                        <a href="/cart"><button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none mx-4 sm:mx-0">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </button></a>
+    
+                        <div class="flex sm:hidden">
+                            <button type="button" class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-label="toggle menu">
+                                <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
+                    <div class="flex flex-col sm:flex-row">
+                        <a class="mt-3 text-gray-600 sm:mx-3 sm:mt-0" href="/">Home</a>
+                        <a class="mt-3 text-gray-600 sm:mx-3 sm:mt-0" href="/">Shop</a>
+                        <a class="mt-3 text-gray-600 sm:mx-3 sm:mt-0" href="/">Categories</a>
+                        <a class="mt-3 text-gray-600 sm:mx-3 sm:mt-0" href="/">Contact</a>
+                        <a class="mt-3 text-gray-600 sm:mx-3 sm:mt-0" href="/">About</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        </div>
+        
+    </div>
 
 <script>
     document.getElementById("slider").addEventListener('click', function(){

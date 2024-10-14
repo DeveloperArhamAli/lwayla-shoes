@@ -8,7 +8,7 @@ const getProducts = async function (req, res){
         let error = req.flash("error");
         let products = await productModel.find();
         let categories = await categoryModel.find();
-        res.render('shop', { products, success, error, categories, title: "" });
+        res.render('shop', { products, success, error, categories, title: "Premium Business Shoes for the Professional" });
     } catch (error) {
         console.error('Error fetching products:', error);
         req.flash('error', 'An error occurred while fetching products');

@@ -17,7 +17,7 @@ const {
 } = require("../controllers/indexController");
 
 
-router.get("/", getProducts);
+router.get("/" , getProducts);   
 
 router.get('/login', checkIfLoggedIn, loginPage);
 

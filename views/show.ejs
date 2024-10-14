@@ -8,9 +8,9 @@
             
             <div class="w-full flex flex-col justify-center md:flex md:flex-row md:justify-start">
 
-                <div class="flex">
+                <div class="flex flex-col gap-5 lg:flex-row">
 
-                    <div class="mr-2">
+                    <div class="mr-2 flex gap-5 lg:flex-col">
                         <% product.image.forEach((image, index) => { %>
                             <div class="w-14">
                                 <img src="data:image/png;base64,<%= image.toString('base64') %>" alt="Product Image <%= index + 1 %>" class="thumbnail" style="aspect-ratio: 1/1; object-fit: contain" onmouseenter="displayImage('<%= image.toString('base64') %>')">
@@ -36,14 +36,14 @@
     
                                 <div class="flex items-center">
     
-                                    <a href="/users/addtocart/<%= product._id %>"><button class="px-8 py-2 bg-orange-600 text-white text-sm font-medium rounded hover:bg-orange-500 focus:outline-none focus:bg-orange-500">Add to Cart</button></a>
+                                    <a href="/users/addtocart/<%= product._id %>"><button class="px-8 py-2 bg-red-600 text-white text-sm font-medium rounded hover:bg-red-950 focus:outline-none focus:bg-red-950">Add to Cart</button></a>
     
                                 </div>
     
                     
                             <% } else { %>
     
-                                <a><button class="px-8 py-2 bg-orange-600 text-white text-sm font-medium rounded hover:bg-orange-500 focus:outline-none focus:bg-orange-500 cursor-not-allowed">Sold Out</button></a>
+                                <a><button class="px-8 py-2 bg-red-600 text-white text-sm font-medium rounded hover:bg-red-950 focus:outline-none focus:bg-red-950 cursor-not-allowed">Sold Out</button></a>
                                     
                             <% } %>
     
@@ -53,7 +53,7 @@
 
                     <span class="text-gray-500 mt-3 flex items-center">
                     
-                        <% if(product.discount){ %> <p class="line-through text-zinc-500">Rs.<%= product.price %>&nbsp;</p><% } else{ %><% } %> <p class="text-orange-700 font-semibold"> Rs.<%= product.price - product.discount %></p>
+                        <% if(product.discount){ %> <p class="line-through text-zinc-500">Rs.<%= product.price %>&nbsp;</p><% } else{ %><% } %> <p class="text-red-700 font-semibold"> Rs.<%= product.price - product.discount %></p>
                         
                     </span>
 
@@ -88,14 +88,14 @@
 
                             <div class="flex items-center mt-6">
 
-                                <a href="/users/addtocart/<%= product._id %>"><button class="px-8 py-2 bg-orange-600 text-white text-sm font-medium rounded hover:bg-orange-500 focus:outline-none focus:bg-orange-500">Add to Cart</button></a>
+                                <a href="/users/addtocart/<%= product._id %>"><button class="px-8 py-2 bg-red-600 text-white text-sm font-medium rounded hover:bg-red-950 focus:outline-none focus:bg-red-950">Add to Cart</button></a>
 
                             </div>
 
                 
                         <% } else { %>
 
-                            <a><button class="px-8 py-2 bg-orange-600 text-white text-sm font-medium rounded hover:bg-orange-500 focus:outline-none focus:bg-orange-500 cursor-not-allowed">Sold Out</button></a>
+                            <a><button class="px-8 py-2 bg-red-600 text-white text-sm font-medium rounded hover:bg-red-950 focus:outline-none focus:bg-red-950 cursor-not-allowed">Sold Out</button></a>
                                 
                         <% } %>
 
@@ -160,4 +160,4 @@
 </script>
 
 
-<%- include ('./partials/footer') %>
+<!-- <%- include ('./partials/footer') %> -->

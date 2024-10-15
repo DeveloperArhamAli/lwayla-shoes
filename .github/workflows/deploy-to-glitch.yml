@@ -15,5 +15,5 @@ jobs:
 
       - name: Push to Glitch
         run: |
-          git remote add glitch https://api.glitch.com/git/pebble-romantic-substance
-          git push -f https://api.glitch.com/git/pebble-romantic-substance main
+          git remote add glitch https://47bf7aca-d088-46de-bde7-e52b768eb8d9@api.glitch.com/git/pebble-romantic-substance
+          git push -f https://47bf7aca-d088-46de-bde7-e52b768eb8d9@api.glitch.com/git/pebble-romantic-substance main

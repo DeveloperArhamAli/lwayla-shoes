@@ -12,8 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetch the full history to avoid shallow push issues
 
       - name: Push to Glitch
         run: |
-          git remote add glitch https://47bf7aca-d088-46de-bde7-e52b768eb8d9@api.glitch.com/git/pebble-romantic-substance
-          git push -f https://47bf7aca-d088-46de-bde7-e52b768eb8d9@api.glitch.com/git/pebble-romantic-substance main
+          git remote add glitchhttps://47bf7aca-d088-46de-bde7-e52b768eb8d9@api.glitch.com/git/pebble-romantic-substance
+          git push -f https://47bf7aca-d088-46de-bde7-e52b768eb8d9@api.glitch.com/git/pebble-romantic-substance

@@ -1,0 +1,19 @@
+name: Deploy to Glitch
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Push to Glitch
+        run: |
+          git remote add glitch https://api.glitch.com/git/pebble-romantic-substance
+          git push -f https://api.glitch.com/git/pebble-romantic-substance main
